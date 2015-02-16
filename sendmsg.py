@@ -68,7 +68,7 @@ if __name__ == "__main__":
     else:
         print(sys.argv[1])
         print(sys.argv[2])
-    mobiles = sys.argv[1].split(',')  # ['13269688234',]
+    mobiles = sys.argv[1].split(',')  # ['18888888888',]
     if cmp(platform.system(), 'Windows') == 0:
         content = sys.argv[2].decode('gbk').encode('utf-8')
     elif cmp(platform.system(), 'Linux') == 0:

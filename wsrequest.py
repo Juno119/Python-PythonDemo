@@ -38,12 +38,12 @@ class WsRequest:
             log.info(self.SoapMessage)
             statuscode, statusmessage, header = webservice.getreply()
 
-            print "Response: ", statuscode, statusmessage
+            print ("Response: ", statuscode, statusmessage)
             # print "headers: "
             # print header
             res = webservice.getfile().read()
             log.info(res)
-            print res.decode('utf-8')
+            print (res.decode('utf-8'))
             try:
                 dom = minidom.parseString(res)
                 nodes = dom.documentElement.getElementsByTagName('SendSmsSaveLogResult')

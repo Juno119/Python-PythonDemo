@@ -44,11 +44,11 @@ print(sys.getdefaultencoding())
 # print sys.argv[1]
 # print(sys.argv[1].decode(sys.getdefaultencoding()).encode('utf-8'))
 
-print os.environ
+print (os.environ)
 
 import platform
 print(platform.mac_ver())
 print(platform.version())
 print(platform.system())
 
-print(cmp(platform.system(),'Windows'))
+# print(cmp(platform.system(),'Windows'))

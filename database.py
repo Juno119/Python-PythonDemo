@@ -9,12 +9,13 @@
 # Created:     
 #-------------------------------------------------------------------------------
 
+
 import os
 import pymssql
 import sys
 
-reload(sys)
-sys.setdefaultencoding("utf-8")
+# reload(sys)
+# sys.setdefaultencoding("utf-8")
 
 
 class MSSQLHelper():
@@ -58,7 +59,7 @@ class MSSQLHelper():
         cur.execute(sql.encode("utf8"))
         row = cur.fetchone()
         while row:
-            print "%s %s" % (row['title'], row['context'])
+            print ("%s %s" % (row['title'], row['context']))
             row = cur.fetchone()
             pass
         self.conn.close()
@@ -67,33 +68,33 @@ class MSSQLHelper():
         cur = self.__GetConnect()
         cur.execute(sql.encode("utf8"))
         for row in cur:
-            print 'row = %r' % (row,)
-            print 'title=%s, context=%s' % (row['title'], row['context'])
+            print ('row = %r' % (row,))
+            print ('title=%s, context=%s' % (row['title'], row['context']))
             pass
         self.conn.close()
 
 
 def main():
-    db = "test"
+    db = "tempdb"
     user = "sa"
     password = "tiger"
-    host = 'YITAO-PC\SQLEXPRESS'
+    host = 'USER-20150213WU'
     sql = "select name from sysobjects where xtype='U'"
-    sql1 = 'select title,context from ss_bbs_topic'
+    sql1 = "SELECT * FROM sys.objects AS o WHERE o.[type]='s'"
     ms = MSSQLHelper(host=host, user=user, pwd=password, db=db)
     for (name,) in ms.ExecQuery(sql):
         print(name)
-    print '---------fetchall()---------'
+    print ('---------fetchall()---------')
     for item in ms.ExecQuery(sql1):
         for r in item:
-            print r
-        print item
-        print '%s %s' % (item['title'], item['context'])
-    print '---------fetchone()---------'
-    ms.Query(sql1)
+            print (r)
+        print (item)
+        # print ('%s %s' % (item['title'], item['context']))
+    print ('---------fetchone()---------')
+    # ms.Query(sql1)
 
-    print '---------for row in cur---------'
-    ms.Query1(sql1)
+    print ('---------for row in cur---------')
+    # ms.Query1(sql1)
 
 
 if __name__ == '__main__':
